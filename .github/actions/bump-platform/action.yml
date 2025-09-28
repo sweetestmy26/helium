@@ -18,7 +18,7 @@ runs:
       env:
         GH_TOKEN: ${{ inputs.token }}
       run: |
-        set -euxo pipefail
+        set -euxo pipefail --log file
 
         PLATFORM_DIR="$PWD"
         HELIUM_DIR="$PLATFORM_DIR/helium-chromium"
@@ -39,7 +39,7 @@ runs:
 
         pushd "$HELIUM_DIR"
           git fetch origin main
-          git checkout origin/main
+          git checkout origin/main/.github
         popd
 
         git switch update || git switch -c update
